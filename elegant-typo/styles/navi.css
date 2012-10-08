@@ -1,0 +1,30 @@
+/*
+Template Name: Elegant Typo
+File: Navigation CSS
+Author: OS Templates
+Author URI: http://www.os-templates.com/
+Licence: <a href="http://www.os-templates.com/template-terms">Website Template Licence</a>
+*/
+
+#navi{
+	display:block;
+	width:250px;
+	font-size:24px;
+	font-family:Georgia, "Times New Roman", Times, serif;
+	text-transform:uppercase;
+	text-align:right;
+	border-bottom:1px dashed #666666;
+	}
+
+#wrapper #navi a{display:block; padding:3px 5px; color:#660000; background-color:#F7F7F7;}
+#wrapper #navi a.active, #wrapper #navi a:hover{color:#CCCCCC; background-color:#FFFFFF;}
+
+#navi ul{margin:0; padding:0; list-style:none;}
+
+#navi li{
+	display:block;
+	width:250px;
+	margin-bottom:20px;
+	}
+
+#navi li.last{margin-bottom:0;}
