@@ -264,7 +264,9 @@ a{outline:none; text-decoration:none;}
 	margin:0;
 	}
 
-#officialdetails{float:left}
+#officialdetails{
+	float:right;
+	}
 #officialdetails li.last{margin-bottom:20px;}
 
 #contactdetails{float:right}
