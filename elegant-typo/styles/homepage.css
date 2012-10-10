@@ -48,6 +48,17 @@ Licence: <a href="http://www.os-templates.com/template-terms">Website Template L
 	border:1px solid #CCCCCC;
 	}
 
+#wrapper .homecontent li p.imgholder2{
+	display:block;
+	width:640px;
+	height:100px;
+	margin:0 0 15px 0;
+	padding:6px;
+	color:#666666;
+	background-color:#F7F7F7;
+	border:1px solid #CCCCCC;
+	}
+
 /* -- Type 1 --*/
 
 #wrapper .homecontent li h2{
