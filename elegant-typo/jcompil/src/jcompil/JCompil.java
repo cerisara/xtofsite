@@ -1,5 +1,17 @@
 package jcompil;
 
+/**
+ * This website compiler assumes preexisting:
+ * - the main page, which also defines a template, thanks to a few "comment tags" that identify the parts to remove/replace
+ * - pages "software/pageXX.html": the compiler creates a NEW index page with links to each software page
+ * - texts "news/newsXX.txt": the compiler creates a NEW page with all news titles + one NEW page with a single news (long version)
+ * - pages "others/pageXX.html": the compiler just add a link in the main template menu to each of these pages
+ * - pages "static/pageXX.html": the compile does not touch this dir ! (eventual links must be added manually to the main template, in particular for JTrans and JSafran)
+ * 
+ * 
+ * @author xtof
+ *
+ */
 public class JCompil {
 	public static void main(String args[]) {
 		JCompil m = new JCompil();
