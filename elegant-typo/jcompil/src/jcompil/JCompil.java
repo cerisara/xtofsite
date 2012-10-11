@@ -2,11 +2,14 @@ package jcompil;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.FilenameFilter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.nio.charset.Charset;
 import java.util.Random;
 
 /**
@@ -52,7 +55,7 @@ public class JCompil {
 	// create template2: remove the content section
 	void loadTemplate() {
 		try {
-			BufferedReader f = new BufferedReader(new FileReader("../index0.html"));
+			BufferedReader f = new BufferedReader(new InputStreamReader(new FileInputStream("../index0.html"), Charset.forName("UTF-8")));
 			StringBuilder sb0 = new StringBuilder();
 			StringBuilder sb1 = new StringBuilder();
 			boolean add0=true, add1=true;
@@ -95,7 +98,7 @@ public class JCompil {
 		newscontent = new String[fs.length];
 		try {
 			for (int i=0;i<fs.length;i++) {
-				BufferedReader bf = new BufferedReader(new FileReader(fs[i]));
+				BufferedReader bf = new BufferedReader(new InputStreamReader(new FileInputStream(fs[i]), Charset.forName("UTF-8")));
 				newstitle[i]=bf.readLine().trim();
 				newsabstract[i]=bf.readLine().trim();
 				StringBuilder sb = new StringBuilder();
