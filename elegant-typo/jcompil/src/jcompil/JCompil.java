@@ -115,8 +115,35 @@ public class JCompil {
 		}
 	}
 	// look for research pages in the research dir
-	// WARNING: use jmath
+	// TODO: use jmath
 	void look4research() {
+		File f = new File("../research");
+		File[] fs = f.listFiles(new FilenameFilter() {
+			@Override
+			public boolean accept(File arg0, String arg1) {
+				return arg1.endsWith(".txt");
+			}
+		});
+		researchtitle = new String[fs.length];
+		researchabstract = new String[fs.length];
+		researchcontent = new String[fs.length];
+		try {
+			for (int i=0;i<fs.length;i++) {
+				BufferedReader bf = new BufferedReader(new InputStreamReader(new FileInputStream(fs[i]), Charset.forName("UTF-8")));
+				researchtitle[i]=bf.readLine().trim();
+				researchabstract[i]=bf.readLine().trim();
+				StringBuilder sb = new StringBuilder();
+				for (;;) {
+					String s = bf.readLine();
+					if (s==null) break;
+					sb.append(s);
+				}
+				researchcontent[i]=sb.toString();
+				bf.close();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
 	}
 	// select one news/research at random and create the HOME page
@@ -126,10 +153,15 @@ public class JCompil {
 		String s = "<h2>"+newstitle[newsidx]+"</h2>\n";
 		s += "<p>"+newsabstract[newsidx]+"</p>\n";
 		String ss = maintemplate.replaceAll("tofill_detson_news", s);
+		int researchidx = rand.nextInt(researchtitle.length);
+		System.out.println("chosen research: "+researchtitle[researchidx]);
+		s = "<h2>"+researchtitle[researchidx]+"</h2>\n";
+		s += "<p>"+researchabstract[researchidx]+"</p>\n";
+		String sss = ss.replaceAll("tofill_detson_research", s);
 
 		try {
 			PrintWriter f = new PrintWriter(new FileWriter("../index.html"));
-			f.println(ss);
+			f.println(sss);
 			f.close();
 		} catch (IOException e) {
 			e.printStackTrace();
