@@ -1,0 +1,4 @@
+One paper accepted at Interspeech 2012
+This work investigates possible tradeoffs between transition-based parsers, like the Malt parser, and maximum spanning-tree parsers, like the MSTParser or the MATE parser.
+Interspeech is a major international conference about automatic speech processing. Interspeech 2012 took place in Portlang, Oregon, USA.
+Don't miss the next Interspeech 2013, which will take place in Lyon, France !
