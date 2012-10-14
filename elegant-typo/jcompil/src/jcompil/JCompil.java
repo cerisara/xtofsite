@@ -70,6 +70,11 @@ public class JCompil {
 					add0=false;
 				} else if (s.indexOf("<!-- detsonnews fin -->")>=0) {
 					add0=true;
+				} else if (s.indexOf("<!-- detsonresearch deb -->")>=0) {
+					sb0.append("tofill_detson_research\n");
+					add0=false;
+				} else if (s.indexOf("<!-- detsonresearch fin -->")>=0) {
+					add0=true;
 				} else if (s.indexOf("<!-- detsoncontent fin -->")>=0) {
 					add1=true;
 				} else {
