@@ -3,11 +3,13 @@ package jcompil;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.nio.charset.Charset;
 import java.util.Random;
@@ -165,7 +167,7 @@ public class JCompil {
 		String sss = ss.replaceAll("tofill_detson_research", s);
 
 		try {
-			PrintWriter f = new PrintWriter(new FileWriter("../index.html"));
+			PrintWriter f = new PrintWriter(new OutputStreamWriter(new FileOutputStream("../index.html"),Charset.forName("UTF-8")));
 			f.println(sss);
 			f.close();
 		} catch (IOException e) {
