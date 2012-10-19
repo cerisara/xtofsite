@@ -177,11 +177,37 @@ public class JCompil {
 	// create research index page by concatenating all research summary in template 2
 	// + create one template2 per research
 	void createResearchPages() {
-
+		String s="";
+		for (int i=0;i<researchtitle.length;i++) {
+			s += "<h2>"+researchtitle[i]+"</h2>\n";
+			s += "<p>"+researchabstract[i]+"</p>\n";
+			s += "<p>"+researchcontent[i]+"</p>\n";
+		}
+		String ss = maintemplate.replaceAll("tofill_detson_research", s);
+		try {
+			PrintWriter f = new PrintWriter(new OutputStreamWriter(new FileOutputStream("../research.html"),Charset.forName("UTF-8")));
+			f.println(ss);
+			f.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	// create 1 news page by concatenating all news in template 2
 	void createNewsPages() {
-
+		String s="";
+		for (int i=0;i<newstitle.length;i++) {
+			s += "<h2>"+newstitle[i]+"</h2>\n";
+			s += "<p>"+newsabstract[i]+"</p>\n";
+			s += "<p>"+newscontent[i]+"</p>\n";
+		}
+		String ss = maintemplate.replaceAll("tofill_detson_news", s);
+		try {
+			PrintWriter f = new PrintWriter(new OutputStreamWriter(new FileOutputStream("../news.html"),Charset.forName("UTF-8")));
+			f.println(ss);
+			f.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	// look for full pages in softwa dir, insert each in a template 2
 	void createSoftwarePages() {
