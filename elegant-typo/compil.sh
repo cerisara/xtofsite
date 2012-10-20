@@ -14,3 +14,6 @@ cp news.html ~/web/
 cp go.html ~/web/
 cp publis.html ~/web/
 
+cp *.jpg ~/web/
+cp -r styles ~/web/
+
