@@ -4,17 +4,11 @@ cd jcompil
 java -cp bin jcompil.JCompil
 
 cd ..
-cp index.html ~/web/
-cp jobs.html ~/web/
-cp links.html ~/web/
-cp software.html ~/web/
-cp jsafran.html ~/web/
-cp research.html ~/web/
-cp news.html ~/web/
-cp go.html ~/web/
-cp publis.html ~/web/
+foreach (index jobs links jsafran software jtrans research news go publis)
+  iconv --from=UTF-8 --to=ISO-8859-1 $i".html" | sed 's,UTF-8,ISO-8859-1,g' >! ~/web/$i".html"
+end
 
 cp *.jpg ~/web/
 cp -r styles ~/web/
 cp -r images ~/web/
-
+cd ~/web
