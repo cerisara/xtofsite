@@ -51,18 +51,11 @@
           </ul>
         </div>
         <div id="search">
-          <form method="post" action="#">
-            <fieldset> <legend>Site Search</legend> <input type="submit" value="GO"
-
-                id="go" name="go" /> <input type="text" onfocus="this.value=(this.value=='Search the site&#8230;')? '' : this.value ;"
-
-                value="Search the site&#8230;" /> </fieldset>
-          </form>
         </div>
         <div id="quicklinks">
           <ul>
             <li><a href="#aboutme">About Me</a></li>
-            <li class="last"><a href="publis">Publications</a></li>
+            <li class="last"><a href="publis.html">Publications</a></li>
           </ul>
         </div>
       </div>
@@ -160,26 +153,50 @@ linguistic and corpus annotations (level BAC+2), computer programming or NLP res
       </div>
       <div id="footer">
         <div id="contactform">
-          <h2>Contact Me</h2>
-          <form method="post" action="#">
-            <fieldset> <legend>Contact Form</legend> <label for="fullname">Name:
-                <input type="text" value="" name="fullname" id="fullname" /> </label>
-              <label class="margin" for="emailaddress">Email: <input type="text"
+<form name="jksearch" action="http://www.google.com/search" method="get" onSubmit="jksitesearch(this)">
 
-                  value="" name="emailaddress" id="emailaddress" /> </label> <label
+<p>Search in this site:<br />
+<input id="hiddenquery" type="hidden" name="q" />
+<input name="qfront" type="text" style="width: 200px" value="" /> <input type="submit" value="Search" /><br />
+<div style="font: bold 11px Verdana;">Google:<input name="se" type="radio" checked>  Yahoo:<input name="se" type="radio">  MSN:<input name="se" type="radio">
+</div>
 
-                for="phone">Telephone: <input type="text" value="" name="phone"
+<script type="text/javascript">
 
-                  id="phone" /> </label> <label class="margin" for="subject">Subject:
-                <input type="text" value="" name="subject" id="subject" /> </label>
-              <label for="message">Message:<br />
-                <textarea rows="4" cols="40" name="message" id="message"></textarea>
-              </label>
-              <p> <input type="submit" value="Submit" name="submitform" id="submitform" />
-                  <input type="reset" value="Reset" name="resetform" id="resetform" />
-              </p>
-            </fieldset>
-          </form>
+// All-in-one Internal Site Search script- By JavaScriptKit.com (http://www.javascriptkit.com)
+// For this and over 400+ free scripts, visit JavaScript Kit- http://www.javascriptkit.com/
+// This notice must stay intact for use
+
+//Enter domain of site to search.
+var domainroot="www.loria.fr/~cerisara"
+
+var searchaction=[ //form action for the 3 search engines
+"http://www.google.com/search",
+"http://search.yahoo.com/search",
+"http://search.msn.com/results.aspx"
+]
+
+var queryfieldname=["q","p","q"] //name of hidden query form for the 3 search engines
+
+function switchaction(cur, index){
+cur.form.action=searchaction[index]
+document.getElementById("hiddenquery").name=queryfieldname[index]
+}
+
+function jksitesearch(curobj){
+for (i=0; i< document.jksearch.se.length; i++){ //loop through radio to see which is checked
+if (document.jksearch.se[i].checked==true)
+switchaction(document.jksearch.se[i], i)
+}
+document.getElementById("hiddenquery").value="site:"+domainroot+" "+curobj.qfront.value
+}
+
+
+</script>
+
+</p>
+
+</form>
         </div>
         <!-- End Contact Form -->
 <a id="aboutme"></a>
@@ -195,7 +212,7 @@ linguistic and corpus annotations (level BAC+2), computer programming or NLP res
               <li>Vandoeuvre-les-Nancy</li>
               <li>France</li>
               <li>Tel: +33 (0)3 54958625</li>
-              <li>Email: cerisara@loria.fr</li>
+              <li>cerisara __aatt__ loria ddoott fr</li>
               <li class="last"><br />
                 <a href="#"></a></li>
             </ul>
