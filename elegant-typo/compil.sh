@@ -3,6 +3,7 @@
 cd jcompil
 java -cp bin jcompil.JCompil
 
+cd ..
 cp index.html ~/web/
 cp jobs.html ~/web/
 cp links.html ~/web/
