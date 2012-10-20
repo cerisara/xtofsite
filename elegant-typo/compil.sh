@@ -1,6 +1,8 @@
 #!/bin/tcsh
 
 cd jcompil
+javac src/jcompil/*.java
+mv -f src/jcompil/*.class bin/jcompil/
 java -cp bin jcompil.JCompil
 
 cd ..
