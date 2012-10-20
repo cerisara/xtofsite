@@ -65,6 +65,7 @@ public class JCompil {
 				String s = f.readLine();
 				if (s==null) break;
 				if (s.indexOf("<!-- detsoncontent deb -->")>=0) {
+					sb1.append("<div class=\"wrapper\">\n");
 					sb1.append("tofill_detson_content\n");
 					add1=false;
 				} else if (s.indexOf("<!-- detsonnews deb -->")>=0) {
@@ -183,7 +184,7 @@ public class JCompil {
 			s += "<p>"+researchabstract[i]+"</p>\n";
 			s += "<p>"+researchcontent[i]+"</p>\n";
 		}
-		String ss = maintemplate.replaceAll("tofill_detson_research", s);
+		String ss = pagetemplate.replaceAll("tofill_detson_content", s);
 		try {
 			PrintWriter f = new PrintWriter(new OutputStreamWriter(new FileOutputStream("../research.html"),Charset.forName("UTF-8")));
 			f.println(ss);
@@ -200,7 +201,7 @@ public class JCompil {
 			s += "<p>"+newsabstract[i]+"</p>\n";
 			s += "<p>"+newscontent[i]+"</p>\n";
 		}
-		String ss = maintemplate.replaceAll("tofill_detson_news", s);
+		String ss = pagetemplate.replaceAll("tofill_detson_content", s);
 		try {
 			PrintWriter f = new PrintWriter(new OutputStreamWriter(new FileOutputStream("../news.html"),Charset.forName("UTF-8")));
 			f.println(ss);
