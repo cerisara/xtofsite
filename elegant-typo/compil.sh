@@ -15,4 +15,5 @@ cp publis.html ~/web/
 
 cp *.jpg ~/web/
 cp -r styles ~/web/
+cp -r images ~/web/
 
