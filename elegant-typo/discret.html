@@ -70,14 +70,7 @@
           </div>
           <!-- Content Box -->
           <div class="wrapper">
-I'm found of Java programming, and often develop lots of software for my
-research. I use to version and distribute my software source with GIT.
-So, if you want to get access to some code and collaborate, please send me
-an email.
 
-<p></p>
-For now, the main two software that are available are JSafran and JTrans.
-<p></p>
 
 <h2><a href="jsafran.html">JSafran</a></h2>
 <h2><a href="jtrans.html">Jtrans</a></h2>
@@ -94,19 +87,26 @@ For now, the main two software that are available are JSafran and JTrans.
 Le moyen le plus simple pour éviter les problèmes SSH est de créer/éditer le fichier $HOME/.ssh/config
 en mettant dedans:<br><br>
 
-Host gitserver<br>
+Host gittalc1<br>
     User git<br>
-    Hostname IP_of_server<br>
+    Hostname 152.81.128.45<br>
     IdentityFile /lien/vers/ta/clef/privee<br>
 <br>
 
-(tu peux des lors tester ta connection avec la cmd: ssh gitserver expand
+(tu peux des lors tester ta connection avec la cmd: ssh gittalc1 expand
 tu dois alors etre "reconnu")
 <br>
 <br>
 
 puis de faire pour recuperer le tout:<br>
-git clone gitserver:repository<br><br>
+git clone gittalc1:xtof/ANR2013<br><br>
+
+Ensuite, dans le repertoire ANR2013 qui a ete cree, faire (frequemment) des<br>
+    git pull origin master<br>
+pour recuperer la derniere version, et des<br>
+    git commit -am "mes modifs"<br>
+    git push origin master<br>
+pour envoyer les modifs 
 
           </div>
           <!-- /Box -->
