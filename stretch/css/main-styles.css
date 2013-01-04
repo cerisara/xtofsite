@@ -154,8 +154,10 @@ a:hover {
 }
 #content-topbar {
 	position: absolute;
-	right: 0px;
+	width: 100%;
+	text-align: center;
     height: 20px;
+    color: black;
 }
 #content-twocols {
 	position: absolute;
