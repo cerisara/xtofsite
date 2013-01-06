@@ -218,15 +218,26 @@ a{outline:none; text-decoration:none;}
 	display:block;
 	width:960px;
 	margin:0;
-	padding:25px 0;
+	padding:0px 0;
 	border-top:1px dashed #666666;
 	}
 
 #footer a{color:#660000; background-color:#FFFFFF;}
 
 #footer h2{
-	margin:0 0 15px 0;
+    margin:0;
 	padding:0 0 8px 0;
+	font-size:13px;
+	font-weight:bold;
+	color:#333333;
+	background-color:#F7F7F7;
+	line-height:normal;
+	border-bottom:1px dashed #CCCCCC;
+}
+
+#footer h3{
+	margin:0 0 15px 0;
+	padding:25px 0 8px 0;
 	font-size:22px;
 	font-weight:normal;
 	font-family:Georgia, "Times New Roman", Times, serif;
@@ -239,7 +250,7 @@ a{outline:none; text-decoration:none;}
 #contactform{
 	display:block;
 	float:left;
-	width:350px;
+	width:550px;
 	}
 
 /* ------Company Details------*/
@@ -247,7 +258,7 @@ a{outline:none; text-decoration:none;}
 #compdetails{
 	display:block;
 	float:right;
-	width:550px;
+	width:350px;
 	}
 
 #compdetails ul{
@@ -287,3 +298,55 @@ a{outline:none; text-decoration:none;}
 	margin:0;
 	padding:0;
 	}
+
+/* ------DET------*/
+
+#detfoot-twocols {
+	display:block;
+	width: 100%;
+	top: 25%;
+	bottom: 0px;
+}
+
+#detfootl {
+float:left;
+	width: 230px;
+	top: 50px;
+    left: 0px;
+	bottom: 0px;
+	padding:15px 10px;
+	color:#666666;
+	background-color:#F7F7F7;
+}
+#detfootl h2{
+	margin:0;
+	padding:0 0 8px 0;
+	font-size:13px;
+	font-weight:bold;
+	color:#333333;
+	background-color:#F7F7F7;
+	line-height:normal;
+	border-bottom:1px dashed #CCCCCC;
+}
+#detfootr {
+float:right;
+	width: 230px;
+	top: 50px;
+    left: 0px;
+	bottom: 0px;
+	padding:15px 10px;
+	color:#666666;
+	background-color:#F7F7F7;
+}
+#detfootr h2{
+	margin:0;
+	padding:0 0 8px 0;
+	font-size:13px;
+	font-weight:bold;
+	color:#333333;
+	background-color:#F7F7F7;
+	line-height:normal;
+	border-bottom:1px dashed #CCCCCC;
+}
+
+

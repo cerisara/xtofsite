@@ -6,7 +6,7 @@ Author URI: http://www.os-templates.com/
 Licence: <a href="http://www.os-templates.com/template-terms">Website Template Licence</a>
 */
 
-#wrapper #introbox{display:block; width:640px; height:274px; margin-bottom:40px; text-align:right; font-family:Georgia, "Times New Roman", Times, serif;}
+#wrapper #introbox{display:block; width:640px; height:100px; margin-bottom:40px; text-align:right; font-family:Georgia, "Times New Roman", Times, serif;}
 #wrapper #introbox div{display:block; float:left; height:274px; font-size:300px; line-height:0.8em; color:#E2E2E2; background-color:#FFFFFF;}
 #wrapper #introbox h2, #introbox p{margin:0 10px 0 0; padding:0; font-weight:normal; line-height:1em;}
 #wrapper #introbox h2{padding-top:65px; font-size:33px; color:#000000; background-color:#FFFFFF;}
@@ -110,3 +110,5 @@ Licence: <a href="http://www.os-templates.com/template-terms">Website Template L
 	color:#660000;
 	background-color:#F7F7F7;
 	}
+
+
