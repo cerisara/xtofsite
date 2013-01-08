@@ -2,12 +2,16 @@ package jcompil;
 
 import java.io.File;
 import java.io.FileFilter;
+import java.io.FileOutputStream;
+import java.io.FilenameFilter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-
-import com.sun.org.apache.xml.internal.resolver.helpers.FileURL;
 
 /**
  * Genere toutes les pages de mon site web a partir de la SEULE homepage.
@@ -30,7 +34,8 @@ import com.sun.org.apache.xml.internal.resolver.helpers.FileURL;
  *   alors on cree un sous-menu "inference" pour le menu "research"
  * - quand on clic sur le menu "research", le texte du premier sous-menu charge est affiche par defaut
  * - les sous-menus possedent tous un premier choix = homepage
- * - une ligne de "==========" separe les 2 colonnes dans un fichier
+ * 
+ * La separation en colonnes se fait en chargeant tout le texte d'un fichier, puis en divisant sa taille en 2
  * 
  * - attention: les fichiers .html ont pour nom le _dernier_ menu, donc attention aux conflits !
  * 
@@ -47,7 +52,13 @@ public class JCompil2 {
 	}
 	
 	public File[] getTextFiles() {
-		return null;
+		File d = new File("../texts");
+		return d.listFiles(new FilenameFilter() {
+			@Override
+			public boolean accept(File arg0, String nom) {
+				return nom.endsWith(".txt");
+			}
+		});
 	}
 	// contient les pointeurs vers les elts du hashmap "allmenus" qui apparaissent sur la homepage
 	ArrayList<String> mainMenus = new ArrayList<String>();
@@ -120,7 +131,13 @@ public class JCompil2 {
 	}
 	
 	public void savePage(String page, String file) {
-		
+		try {
+			PrintWriter f = new PrintWriter(new OutputStreamWriter(new FileOutputStream(file), Charset.forName("UTF-8")));
+			f.println(page);
+			f.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public String delLowCols(String template) {
