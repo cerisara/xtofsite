@@ -16,3 +16,13 @@
   <script src="${bf.util.site_path_helper('js/libs/modernizr-1.7.min.js')}"></script>
 
   <%include file="theme.mako"/>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
