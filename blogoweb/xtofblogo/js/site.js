@@ -2,7 +2,7 @@ function twitterSidebar(){
   jQuery("#tweets").tweet({
     avatar_size: 32,
     count: 5,
-    query: "example",
+    query: "cerisara",
     loading_text: "searching twitter..."
   });  
 }

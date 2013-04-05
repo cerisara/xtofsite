@@ -8,10 +8,10 @@
     </ul>
   </section>
   <section>
-    <h1 class="post_header_gradient theme_font">From Twitter "example"</h1>
+    <h1 class="post_header_gradient theme_font">From Twitter "cerisara"</h1>
     <div id="on_twitter">
       <div id="tweets"></div>
-      <a href="http://search.twitter.com/search?q=example" style="float: right">See more tweets</a>
+      <a href="http://search.twitter.com/search?q=cerisara" style="float: right">See more tweets</a>
     </div>
   </section>
 </aside>
