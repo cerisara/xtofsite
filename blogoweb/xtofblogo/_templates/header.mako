@@ -14,8 +14,10 @@ def nav_class(path):
     <ul class="theme_font">
       <li><a href="${bf.util.site_path_helper()}"
              class="${nav_class(bf.util.site_path_helper())}">Home</a></li>
-      <li><a href="${bf.util.site_path_helper(bf.config.blog.path)}"
-             class="${nav_class(bf.util.site_path_helper(bf.config.blog.path))}">Blog</a></li>
+      <li><a href="${bf.util.site_path_helper(bf.config.blog.path,'category/nlp')}"
+             class="${nav_class(bf.util.site_path_helper(bf.config.blog.path,'category/nlp'))}">CS/NLP Blog</a></li>
+      <li><a href="${bf.util.site_path_helper(bf.config.blog.path,'category/go')}"
+             class="${nav_class(bf.util.site_path_helper(bf.config.blog.path,'category/go'))}">Go Blog</a></li>
       <li><a href="${bf.util.site_path_helper(bf.config.blog.path,'archive')}"
              class="${nav_class(bf.util.site_path_helper(bf.config.blog.path,'archive'))}">Archives</a></li>
     </ul>
