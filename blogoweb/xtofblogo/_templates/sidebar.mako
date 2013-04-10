@@ -8,10 +8,17 @@
     </ul>
   </section>
   <section>
-    <h1 class="post_header_gradient theme_font">From Twitter "cerisara"</h1>
+    <%
+      if hasattr(bf.template_context, 'category'):
+        detcat = bf.template_context.category
+      else:
+        detcat = 'cerisara'
+      endif
+    %>
+    <h1 class="post_header_gradient theme_font">From Twitter "${detcat}"</h1>
     <div id="on_twitter">
-      <div id="tweets"></div>
-      <a href="http://search.twitter.com/search?q=cerisara" style="float: right">See more tweets</a>
+      <div id="tweets${detcat}"></div>
+      <a href="http://search.twitter.com/search?q=${detcat}" style="float: right">See more tweets</a>
     </div>
   </section>
 </aside>
