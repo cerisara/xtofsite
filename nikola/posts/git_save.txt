@@ -24,7 +24,7 @@ you have access to and clone them locally (in bare format to reduce space; I ass
     
     ssh gittalc1 expand > /tmp/tt
     
-    tail -n +3 /tmp/tt | awk '{aa=$NF; sub(/\\//,"-",aa); print "git clone --bare "$NF" '$LOCALDIR'/"aa}' > /tmp/tt.sh
+    tail -n +3 /tmp/tt | awk '{aa=$NF; sub(/\\//,"-",aa); print "git clone --bare gittalc1:"$NF" '$LOCALDIR'/"aa}' > /tmp/tt.sh
     
     tcsh /tmp/tt.sh
     
