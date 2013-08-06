@@ -1,0 +1,136 @@
+## -*- coding: utf-8 -*-
+<%namespace file="base_helper.tmpl" import="*"/>
+${set_locale(lang)}
+<!DOCTYPE html>
+<html lang="${lang}">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    ${html_head()}
+    <%block name="extra_head">
+    </%block>
+    ${extra_head_data}
+    <style>
+      #menu {
+      height: 100px;
+      background-color: #CCC;
+      border-radius: 10px;
+      }
+    </style>
+    
+    <!-- for the calendar -->
+      <!-- Core CSS File. The CSS code needed to make eventCalendar works -->
+      <link rel="stylesheet" href="${abs_link('eventCalendar.css')}">
+      <!-- Theme CSS file: it makes eventCalendar nicer -->
+      <link rel="stylesheet" href="${abs_link('eventCalendar_theme_responsive.css')}">
+      <!--<script src="js/jquery.js" type="text/javascript"></script>-->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
+      <script src="${abs_link('assets/js/jquery.eventCalendar.js')}"></script>
+
+<script>
+</script>
+
+</head>
+<body>
+<!-- Menubar -->
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+
+        <!-- .btn-navbar is used as the toggle	 for collapsed navbar content -->
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </a>
+
+            <a class="brand" href="${abs_link('/stories/about.html')}">
+            ${blog_title}
+            </a>
+            <!-- Everything you want hidden at 940px or less, place within here -->
+            <div class="nav-collapse collapse">
+                <ul class="nav">
+  		    <li><a href="/stories/cv.html">CV</a></li>
+  		    <li><a href="/index.html">News</a></li>
+  		    <li><a href="/stories/softs.html">Software</a></li>
+  		    <li><a href="/stories/projects.html">Projects</a></li>
+  		    <li><a href="/stories/intranet/intranet.html">Private</a></li>
+<!--                    ${html_sidebar_links()}
+-->
+                </ul>
+                %if search_form:
+                    ${search_form}
+                %endif
+                <ul class="nav pull-right">
+                <%block name="belowtitle">
+                %if len(translations) > 1:
+                    <li>${html_translations()}</li>
+                %endif
+                </%block>
+<!--                <%block name="sourcelink"> </%block>
+-->
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<!-- End of Menubar -->
+<div class="container-fluid" id="container-fluid">
+    <!--Body content-->
+    <div class="row-fluid">
+    <div class="span2">
+    
+    
+      <div style="text-align:center">
+	<img src="${abs_link('/synalpe.jpg')}" width="150px">
+      </div>
+
+      
+      <div id="menu">
+	<ul class="nav nav-list" style="padding-top:10px">
+	  ${html_sidebar_links()}
+	</ul>
+      </div>
+      
+      <br>
+      <a class="twitter-timeline"  href="https://twitter.com/ccerisara"  data-widget-id="287890291191582720">Tweets de @ccerisara</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    </div>
+    <div class="span8">
+    <%block name="content"></%block>
+    </div>
+
+    <div class="span2" id="menu" style="margin-top:130px;height:200px">
+      <h3 style="text-align:center">Links</h3>
+      <br>
+      <ul class="nav nav-list" style="padding-top:10px">
+	<li><a href="http://www.loria.fr">LORIA</a></li>
+      </ul>
+      
+      <!-- calendar -->
+
+      <br>
+      <br>
+      <br>
+      <div id="detcal"></div>
+      <script>
+	  $("#detcal").eventCalendar({
+	    eventsjson: 'http://talc1.loria.fr/users/cerisara/event.humanDate.json.php',
+	    jsonDateFormat: 'human',  // 'YYYY-MM-DD HH:MM:SS'
+	    eventsScrollable: true,
+	    showDescription: true
+	  });
+      </script>
+  </div>
+
+    </div>
+    <!--End of body content-->
+</div>
+<div class="footerbox">
+    ${content_footer}
+</div>
+${html_social()}
+${late_load_js()}
+${analytics}
+    <script type="text/javascript">jQuery("a.image-reference").colorbox({rel:"gal",maxWidth:"80%",maxHeight:"80%",scalePhotos:true});</script>
+</body>

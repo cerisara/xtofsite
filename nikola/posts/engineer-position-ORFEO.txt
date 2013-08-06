@@ -1,0 +1,11 @@
+.. link: 
+.. description: 
+.. tags: engineer,jobs,position
+.. date: 2013/05/17 19:26:23
+.. title: engineer position available
+.. slug: engineer-position-available
+
+An engineer position is available in both the Synalp and PAROLE teams for 10 months 
+starting in 2013.
+It is related to named entity recognition and speech recognition.
+Please contact us if you are interested.
