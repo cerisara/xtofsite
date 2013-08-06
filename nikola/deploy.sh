@@ -10,14 +10,7 @@ set outdir = "/var/www/users/cerisara/"
 
 nikola build
 
-set host=`hostname`
-if ("$host" == "talc1") then
-  rm -rf $outdir/*
-  cp -r output/* $outdir
-  chmod -R 755 $outdir
-  cp access $outdir/stories/intranet/.htaccess
-  cp passwd $outdir/stories/intranet/.htpasswd
-  chmod 775 $outdir/stories/intranet/.htaccess
-  chmod 664 $outdir/stories/intranet/.htpasswd
-endif
+scp -r output/* talc1:$outdir
 
+scp access talc1:$outdir/stories/intranet/.htaccess
+scp passwd talc1:$outdir/stories/intranet/.htpasswd
