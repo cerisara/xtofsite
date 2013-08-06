@@ -1,0 +1,30 @@
+.. link: 
+.. description: 
+.. tags: git,backup,save
+.. date: 2013/08/06 10:00:00
+.. title: Backup your GIT repos on talc1
+.. slug: git_backup
+
+If you use our git server on TALC1, don't forget that nothing is saved !
+It shouldn't be a problem in case of a crash of TALC1, because your local copies of
+your repositories are self-contained and can be used to recreate new server copies.
+
+But you have to be cautious to always keep at least one local copy of all your repositories.
+In the case of old repositories that you have not touched from several months/years, you may not have
+anymore a local copy of them.
+
+So I suggest you to run from time to time the following script, which lists all of the repositories
+you have access to and clone them locally (in bare format to reduce space; I assume that you have your SSH config setup):
+
+    #!/bin/tcsh
+    
+    set LOCALDIR = "/home/somehwere/myEmptyBackupDir"
+    
+    mkdir -p $LOCALDIR
+    
+    ssh gittalc1 expand > /tmp/tt
+    
+    tail -n +3 /tmp/tt | awk '{aa=$NF; sub(/\\//,"-",aa); print "git clone --bare "$NF" '$LOCALDIR'/"aa}' > /tmp/tt.sh
+    
+    tcsh /tmp/tt.sh
+    
