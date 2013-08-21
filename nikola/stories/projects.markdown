@@ -7,7 +7,7 @@
 .. slug: projects
 -->
 
-The team is currently involved in the following projects:  
+I'm currently involved in the following projects:  
 
 
 ### ORTOLANG
