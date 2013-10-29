@@ -1,0 +1,85 @@
+.. link: 
+.. description: 
+.. tags: video, ffmpeg
+.. date: 2013/10/28 13:17:35
+.. title: Video editing with ffmpeg
+.. slug: video-editing-with-ffmpeg
+
+How to edit videos with ffmpeg
+==============================
+
+Let's assume that you have recorded some video with your camcorder,
+and you'd like to edit it a bit before showing it to your family and friends.
+Here are some tips to do that with ffmpeg scripts, in a native linux, without requiring
+any visual all-in-one software.
+These little scripts provide examples to perform the following tasks:
+
+* Extract segments from the main original big video
+* Create "title" videos from still pictures, with optional padding
+* Insert these transition pictures between segments with fading out
+* Merge everything together and encode it so that it can be read on most hardware dvd player.
+
+Extract segments from a long video file
+---------------------------------------
+
+This is very simple:
+
+    ffmpeg -y -ss 00:01:42 -i bigvideo.avi -t 00:00:53 -vcodec copy -acodec copy segment.avi
+
+This command extracts a segment that starts at 1 minute and 42 seconds and lasts 53 seconds.
+Warning: the order of options is important !
+
+Create transition or title videos from a still picture
+------------------------------------------------------
+
+The command to create a video from a picture is the following, with the use of a padding filter to
+add black margins around the picture. This padding may be important because, when played on a real
+hardware dvd player, the film may appear cropped depending on the actual hardware configuration.
+So, adding these extra margins reduce the risk to loose the borders of the picture and also makes
+everything look better anyway.
+
+    ffmpeg -loop 1 -y -i picture.png -r 29.97 -i silentAudioFile.mp3 -filter_complex 'setdar=4/3' -acodec copy -vcodec mpeg4 -t 00:00:02 -b:v 2000k -s 440x330 tmp.ts
+
+    ffmpeg -y -i tmp.ts -filter_complex 'pad=640:480:100:75' -acodec copy -vcodec mpeg4 -b:v 2000k -s 640x480 titre.ts
+
+The first command merges a picture and a sound file for 2 seconds, forces the output format to be 4/3, and encodes the
+resulting film in mpeg4 at 2000Kbits/s. The final objective here is to get a film in 640x480 format.
+So, taking into account the padding, the picture is first scaled down to a 440x330 video format.
+Then the second command takes this 440x330 video and adds a padding to obtain a 640x480 video.
+The two numbers 100:75 are used to position the picture at the center of the final video, which is saved in the titre.ts file.
+
+Insert the transition video between segments with fading
+--------------------------------------------------------
+
+To obtain a nice fading, we will proceed in several steps: the first one
+extracts the "last" picture from the transition video...
+
+    ffmpeg -y -i titre.ts -ss 00:00:01.9 -f image2 -vcodec mjpeg -vframes 1 titre.jpg
+
+... and overlays this picture titre.jpg on top of the 30 first frames of the video segment, with fading and with the
+audio stream from the video segment:
+
+    ffmpeg -y -f image2 -r 29.97 -loop 1 -i titre.jpg -i segment.avi -filter_complex '[0:v]fade=out:0:30:alpha=1[tit];[1:v][tit]overlay=0:0[outv]' -map '[outv]' -map 1:a -c:a mp3 -c:v mpeg4 -b:v 2000k segmentWithTitle.avi
+
+Merge and encode for hardware dvd players
+-----------------------------------------
+
+But in segmentWithTitle.avi, the title "slide" very quickly fades out and we don't have the time to read it.
+So the last step consists in concatenating first the 2s-long titre.ts loop-video with the fading-enabled segmentWithTitle.avi vide, and encoding everything into stereo SVCD to have it compatible with old hardware devices:
+
+    ffmpeg -i titre.ts -i segmentWithTitle.avi -filter_complex '[0:v] [0:a] [1:v] [1:a] concat=n=2:v=1:a=1' -ac 2 -target pal-svcd final.mpg
+
+It's easy to generalize this script in order to create several transitions between a dozen of video segments.
+Note that the last encoding command must be launched a single time, in the very end, adding as many "-i" input files as
+needed, where each input must have a corresponding '[2:v] [2:a]' option and 'n=2' indicates the total number of input files.
+
+In order for your video to be readable on most old/cheap hardware dvd player, I suggest to use as above the SVCD format,
+although you might be tempted to rather use divx or xvid formats because your dvd player is said to be "DivX certified".
+But in practive, it's extremely difficult to obtain with ffmpeg a real divx file that is read faultlessly by such devices,
+given the maximum rate supported by each device, as well as many other weird factors that will make your file unreadable
+in the device of your friend who is far away. So I suggest to play it safe here, and rely on the SVCD standard that is
+very well supported by both ffmpeg and most devices. And the quality is good enough for non-HD TV sets, with only a minor
+increase in file size as compared to mpeg4. Well, that's at least my personal opinion, you might disagree of course... :-)
+
+
+
