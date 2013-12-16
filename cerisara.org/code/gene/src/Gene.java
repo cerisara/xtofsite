@@ -11,6 +11,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 /**
@@ -38,6 +40,8 @@ public class Gene {
 	public static boolean isHusband(String s) {return s.contains(" HUSB ");}
 	public static boolean isWife(String s) {return s.contains(" WIFE ");}
 	public static boolean isEnfant(String s) {return s.contains(" CHIL ");}
+	// marche si on n'a que des photos dans les personnes
+	public static boolean isPhoto(String s) {return s.contains(" FILE ");}
 
 	class Famille {
 		String idx;
@@ -93,6 +97,16 @@ public class Gene {
 			if (date!=null) d=date;
 			return d;
 		}
+		public int getYear() {
+			if (date==null) return -1;
+			Pattern p = Pattern.compile("\\d\\d\\d\\d");
+			Matcher m = p.matcher(date);
+			if (m.find()) {
+				String g = m.group();
+				System.out.println("debug "+g);
+				return Integer.parseInt(g);
+			} else return -1;
+		}
 	}
 	
 	class Event {
@@ -117,6 +131,13 @@ public class Gene {
 		}
 	}
 
+	private String getPhoto(String s) {
+		String r=null;
+		int i=s.indexOf(" FILE ");
+		if (i>=0) r=s.substring(i+6);
+		return r;
+	}
+	
 	class Individu {
 		String idx;
 		String givenName=null, surname=null;
@@ -124,6 +145,7 @@ public class Gene {
 		Event birth=null, death=null;
 		ArrayList<String> idxMarried = new ArrayList<String>();
 		String idxParents=null;
+		String photo=null;
 
 		public String load(String header, BufferedReader f) throws Exception {
 			String[] ss = header.split(" ");
@@ -137,9 +159,9 @@ public class Gene {
 				int niv=Integer.parseInt(ss[0]);
 				if (niv<=nivBase) return s;
 				if (isGivenName(s)) {
-					givenName=ss[ss.length-1];
+					givenName=ss[2];
 				} else if (isSurname(s)) {
-					surname=ss[ss.length-1];
+					surname=ss[2];
 				} else if (isSex(s)) {
 					sex=ss[ss.length-1].charAt(0);
 				} else if (isBirth(s)) {
@@ -152,6 +174,8 @@ public class Gene {
 					idxParents = ss[ss.length-1];
 				} else if (isMarriedTo(s)) {
 					idxMarried.add(ss[ss.length-1]);
+				} else if (photo==null&&isPhoto(s)) {
+					photo=getPhoto(s);
 				}
 				s=f.readLine();
 			}
@@ -163,7 +187,22 @@ public class Gene {
 			if (givenName!=null) pren=givenName;
 			if (surname!=null) nom=surname;
 			String s="<a href=\""+idx+".html\">"+pren+" "+nom+"</a><br>";
-			if (birth!=null && birth.date!=null) s+=birth.date.toHTML();
+			if (birth!=null && birth.date!=null) {
+				if (birth.date.getYear()>1919 && (death==null || death.date==null) ) {
+				} else {
+					s+=birth.date.toHTML();
+					if (death!=null && death.date!=null) {
+						s+="-"+death.date.toHTML();
+					}
+				}
+			}
+/*
+			if (photo!=null) {
+				s+="<br>";
+				<img style="width: 2549px; height: 1912px;" alt=""
+						src="file:///home/xtof/Pictures/agnes.jpg"><br>
+			}
+			*/
 			return s;
 		}
 	}
@@ -217,10 +256,10 @@ public class Gene {
 				}
 			}
 
-			PrintWriter f = new PrintWriter(new OutputStreamWriter(new FileOutputStream(outdir+"/"+p.idx+".html"), Charset.forName("ISO-8859-1")));
+			PrintWriter f = new PrintWriter(new OutputStreamWriter(new FileOutputStream(outdir+"/"+p.idx+".html"), Charset.forName("UTF-8")));
 			f.println("<!--");
 			f.println(".. title: Généalogie");
-			f.println(".. slug: gene");
+			f.println(".. slug: "+p.idx);
 			f.println(".. date: 2013/12/13 16:18:18");
 			f.println(".. tags: ");
 			f.println(".. link: ");
@@ -298,10 +337,94 @@ public class Gene {
 			f.println("</tbody>");
 			f.println("</table>");
 			f.println("<br>");
-
 			f.println("</body>");
-
 			f.close();
+			
+			// TODO: copier plutot que dupliquer le code...
+			if (p.surname!=null&&p.givenName!=null&&p.surname.toLowerCase().equals("cerisara")&&p.givenName.toLowerCase().equals("christophe")) {
+				f = new PrintWriter(new OutputStreamWriter(new FileOutputStream(outdir+"/gene.html"), Charset.forName("UTF-8")));
+				f.println("<!--");
+				f.println(".. title: Généalogie");
+				f.println(".. slug: gene");
+				f.println(".. date: 2013/12/13 16:18:18");
+				f.println(".. tags: ");
+				f.println(".. link: ");
+				f.println(".. description: ");
+				f.println("-->");
+
+				f.println("<body>");
+				f.println("Arbre simplifié avec les parents et les enfants, centré sur une personne. Cliquez sur un nom pour naviguer:<br><br>");
+				f.println("<table style=\"text-align: left; width: 100%;\" border=\"0\" cellpadding=\"2\" cellspacing=\"2\">");
+				f.println("<tbody>");
+				f.println("<tr>");
+				f.println("<td style=\"vertical-align: top; text-align: center; width: 33%;\">");
+				f.println(mere);
+				f.println("</td>");
+				f.println("<td style=\"vertical-align: top; width: 34%;\"><br>");
+				f.println("</td>");
+				f.println("<td style=\"vertical-align: top; text-align: center; width: 33%;\">");
+				f.println(pere);
+				f.println("</td>");
+				f.println("</tr>");
+				f.println("<tr>");
+				f.println("<td style=\"vertical-align: top; text-align: center;\">");
+				f.println("<hr style=\"width: 100%; height: 2px;\"></td>");
+				f.println("</td>");
+				f.println("<td style=\"vertical-align: top;\"><br>");
+				f.println("</td>");
+				f.println("<td style=\"vertical-align: top; text-align: center;\">");
+				f.println("<hr style=\"width: 100%; height: 2px;\"></td>");
+				f.println("</td>");
+				f.println("</tr>");
+				f.println("<tr>");
+				f.println("<td style=\"vertical-align: top;\"><br>");
+				f.println("</td>");
+				f.println("<td style=\"vertical-align: top; text-align: center;\">");
+				f.println(p.showHTML()+"<br>");
+				f.println(children2html(p));
+				f.println("</td>");
+				f.println("<td style=\"vertical-align: top;\"><br>");
+				f.println("</td>");
+				f.println("</tr>");
+				f.println("</tbody>");
+				f.println("</table>");
+				f.println("<br>");
+				f.println("<br>");
+				
+				f.println("<hr style=\"width: 100%; height: 4px;\">");
+				f.println("<br>");
+
+				// table de 8 colonnes avec toutes les personnes
+				f.println("Liste de toutes les personnes de la base de donnée:<br><br>");
+				ev = new String[allpersons.size()];
+				ii=0;
+				for (Individu tmpp : allpersons.values()) {
+					ev[ii++]=tmpp.surname+" "+tmpp.givenName+" IDX="+tmpp.idx;
+				}
+				Arrays.sort(ev);
+				nl=ev.length/ncols;
+				if (nl*ncols<ev.length) nl++;
+				
+				f.println("<table style=\"text-align: left; width: 100%;\" border=\"0\" cellpadding=\"2\" cellspacing=\"2\">");
+				f.println("<tbody>");
+				ii=0;
+				for (int l=0;l<nl;l++) {
+					f.println("<tr>");
+					for (int c=0;c<ncols;c++) {
+						f.println("<td style=\"vertical-align: top;\">");
+						int j=ev[ii].indexOf(" IDX=");
+						f.println("<a href=\""+ev[ii].substring(j+5)+".html\">"+ev[ii].substring(0, j)+"</a>");
+						f.println("</td>");
+						if (++ii>=ev.length) break;
+					}
+					f.println("</tr>");
+				}
+				f.println("</tbody>");
+				f.println("</table>");
+				f.println("<br>");
+				f.println("</body>");
+				f.close();
+			}
 		}
 	}
 	
