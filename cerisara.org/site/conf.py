@@ -66,6 +66,7 @@ NAVIGATION_LINKS = {
         ('/archive.html', 'Archives'),
         ('/categories/index.html', 'Tags'),
         ('/rss.xml', 'RSS'),
+        ('/stories/gene.html', 'généalogie'),
         ((('http://talc1.loria.fr/synalp/index.html', 'Equipe'),
 	 ('http://www.loria.fr','Labo')), 'Mon travail'),
 	),
@@ -110,10 +111,12 @@ NAVIGATION_LINKS = {
 POSTS = (
     ("posts/*.rst", "posts", "post.tmpl"),
     ("posts/*.txt", "posts", "post.tmpl"),
+    ("posts/*.html", "posts", "post.tmpl"),
 )
 PAGES = (
     ("stories/*.rst", "stories", "story.tmpl"),
     ("stories/*.txt", "stories", "story.tmpl"),
+    ("stories/*.html", "stories", "story.tmpl"),
 )
 
 # One or more folders containing files to be copied as-is into the output.
