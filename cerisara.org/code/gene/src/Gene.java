@@ -135,7 +135,9 @@ public class Gene {
 		String r=null;
 		int i=s.indexOf(" FILE ");
 		if (i>=0) r=s.substring(i+6);
-		return r;
+		File f = new File(r);
+		String d = f.getParent()+"/reduced/"+f.getName();
+		return d;
 	}
 	
 	class Individu {
@@ -196,13 +198,10 @@ public class Gene {
 					}
 				}
 			}
-/*
 			if (photo!=null) {
 				s+="<br>";
-				<img style="width: 2549px; height: 1912px;" alt=""
-						src="file:///home/xtof/Pictures/agnes.jpg"><br>
+				s+="<img alt=\"\" src=\"file://"+photo+"\"><br>";
 			}
-			*/
 			return s;
 		}
 	}
