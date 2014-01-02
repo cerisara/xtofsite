@@ -14,6 +14,8 @@ import java.util.Iterator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import utils.FileUtils;
+
 
 /**
  * Build a set of simple HTML files to represent the ancestor tree from a GEDCOM file
@@ -135,7 +137,9 @@ public class Gene {
 		String r=null;
 		int i=s.indexOf(" FILE ");
 		if (i>=0) r=s.substring(i+6);
-		return r;
+		File f = new File(r);
+		String d = f.getParent()+"/reduced/"+f.getName();
+		return d;
 	}
 	
 	class Individu {
@@ -196,13 +200,11 @@ public class Gene {
 					}
 				}
 			}
-/*
 			if (photo!=null) {
 				s+="<br>";
-				<img style="width: 2549px; height: 1912px;" alt=""
-						src="file:///home/xtof/Pictures/agnes.jpg"><br>
+				String ff = FileUtils.noDir(photo);
+				s+="<img alt=\"\" src=\"pics/"+ff+"\"><br>";
 			}
-			*/
 			return s;
 		}
 	}
