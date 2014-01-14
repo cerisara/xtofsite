@@ -66,7 +66,7 @@ NAVIGATION_LINKS = {
         ('/archive.html', 'Archives'),
         ('/categories/index.html', 'Tags'),
         ('/rss.xml', 'RSS'),
-        ('/stories/gene.html', 'généalogie'),
+        ('/stories/gene/gene.html', 'généalogie'),
         ((('http://talc1.loria.fr/synalp/index.html', 'Equipe'),
 	 ('http://www.loria.fr','Labo')), 'Mon travail'),
 	),
