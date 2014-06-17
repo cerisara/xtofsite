@@ -16,8 +16,6 @@ JTrans only works in French for now.
 
 JTrans is open-source, and is version-controlled under GIT.
 
-NEWS
-====
 JTrans source code is now available in GitHub:
 [JTrans source code](https://github.com/synalp/jtrans)
 
