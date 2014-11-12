@@ -5,6 +5,5 @@
 .. title: Sciences en marche
 .. slug: sciencesMarche
 
-
-<div class='vspace'></div><div><a class='urllink' href='http://sciencesenmarche.org' rel='nofollow'><img src='http://sciencesenmarche.org/fr/wp-content/uploads/2014/07/sciencesenmarche.jpg' alt='' /></a></div>
-
+.. image:: http://sciencesenmarche.org/fr/wp-content/uploads/2014/07/sciencesenmarche.jpg
+   :target: http://sciencesenmarche.org
