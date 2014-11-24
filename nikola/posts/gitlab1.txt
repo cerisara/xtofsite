@@ -1,0 +1,31 @@
+.. link: 
+.. description: 
+.. tags: git, gitlab
+.. date: 2014/11/16 08:30:00
+.. title: New gitlab continuous integration server
+.. slug: gitlab1
+
+A new *continuous integration* server has been installed on TALC2: it is integrated with the gitlab main server.
+
+What is continuous integration ?
+================================
+
+*Continuous integration* is an approach that automates testing and deployment of your code.
+It is extremely useful because it saves you hours of debugging, by identifying bugs very early.
+It is one of the preferred software development approach in the field of Agile/Test-driven paradigm.
+
+Its use is extremely simple:
+
+* You first have to write tests in your code that can run automatically and quickly. They are typically unit tests
+  that check on small artificial datasets that various parts of your code return the correct values.
+* Then, you have to create a new project on the gitlab-ci server here: http://talc2.loria.fr:8889
+  by importing your project from the gitlab server; you can use your gitlab login to connect.
+* Then, whenever your "git push" some modification in your code onto the gitlab server, your software will be automatically 
+  re-deployed on TALC2 and your tests will be run automatically; the outcome (success or fail) shows up on the project webpage,
+  and you can configure the server to send emails, or RSS in case of failure.
+
+This approach forces you to write a really self-contained software and self-evaluating tests, which may look a bit annoying at
+first sight. But this is actually the main advantage of this approach, because this is the only way to really reduce the
+amounts of bugs, and to greatly improve maintainability of your code.
+
+I will post more details about it later on if needed.
