@@ -1,0 +1,19 @@
+.. link: 
+.. description: 
+.. tags: flash,firefox
+.. date: 2013/08/06 10:00:00
+.. title: Update your flash plugin for firefox
+.. slug: flash
+
+If you are using linux with firefox, you may sometimes see a warning when trying
+to play some flash website about your flash plugin being vulnerable because outdated.
+
+Updating your plugin is relatively easy:
+
+* First, follow the given ling to the Adobe site to download the last plugin version.
+  I suggest downloading the .tar.gz version of the plugin.
+* Then, unzip this archive in a fresh directory: you'll find a file called something like *libflashplugin.so*
+* You just have to copy this file to the right place. In order to know where, launch firefox and go to "about:plugins".
+  You'll see a list of plugin, look for the Flash plugin: the directory of the plugin file is given.
+* Just copy/override the previous .so file in this directory by the new one, restart firefox: you're done !
+
