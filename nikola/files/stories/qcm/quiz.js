@@ -16,7 +16,7 @@ for (q=0;q<totalquestions;q++){
     xxml+='<r>'+actualchoices[q]+'</r>\n';
   }
   xxml+='</reps>\n';
-  $.post('http://127.0.0.1/xtof/siteperso/repqcm.php', {xml: xxml });
+  $.post('http://talc1.loria.fr/users/cerisara/repqcm.php', {xml: xxml });
 
 // TODO: send the actualchoices array by email
 
