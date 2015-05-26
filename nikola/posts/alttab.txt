@@ -1,0 +1,15 @@
+.. link: 
+.. description: 
+.. tags: ubuntu
+.. date: 2015/05/26 10:00:00
+.. title: Alt-tab under Ubuntu 14
+.. slug: alttab
+
+I don't like the way Ubuntu 14 handles the Alt-Tab window switching shortcut,
+because it switches windows across desktops, while I prefer to stay within the
+same desktop when switching.
+
+One way to disable this across-desktop switching is to launch ccsm
+and then disable the "Viewport Switcher".
+At least this option worked for me.
+
