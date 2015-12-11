@@ -19,3 +19,15 @@ JTrans is open-source, and is version-controlled under GIT.
 JTrans source code is now available in GitHub:
 [JTrans source code](https://github.com/synalp/jtrans)
 
+How to cite:
+
+    @InProceedings{cerisara09,
+      author =   {Cerisara, C. and Mella, O. and Fohr, D.},
+      title =    {JTrans, an open-source software for semi-automatic text-to-speech alignment},
+      booktitle =    {Proc. of INTERSPEECH},
+      year =     {2009},
+      address =      {Brighton, UK},
+      month = sep,
+    }
+
+
