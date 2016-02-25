@@ -8,7 +8,8 @@ set d = ""`pwd`
 
 set outdir = "/var/www/users/cerisara/"
 
-/home/xtof/softs/nikola-5.4.4/scripts/nikola build
+# /home/xtof/softs/nikola-5.4.4/scripts/nikola build
+nikola build
 
 scp -r output/* talc1:$outdir
 
