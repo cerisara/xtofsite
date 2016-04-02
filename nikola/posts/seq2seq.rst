@@ -7,6 +7,33 @@
 .. description: 
 .. type: text
 
+There are many different types of seq2seq models:
+
+- The simplest one consists in training an LSTM to predict the next item in
+  the sequence from a truncated history of previous items. An example is shown
+  in the Keras examples/ directory to generate text.
+- Another one `<http://papers.nips.cc/paper/5346-sequence-to-sequence-learning-with-neural-networks.pdf>`__
+  rather assumes two different sequences: a source one, and a target one.
+  The full input sequence is first encoded into a hidden state vector V
+  by the encoding LSTM, and the decoding LSTM behaves just like the first
+  seq2seq model described above to generate the output sequence item by item.
+  This model may be implemented in Keras with a single LSTM, by carefully
+  formatting its input observations.
+
+  - Training can be done with the gold target sequence history, but isn't it
+    better to rather use the predicted history ? Training can then not
+    easily be realized with Keras.
+  - When training with the predicted history, if the decoding LSTM is long,
+    lots of errors will propagate, making training difficult to converge ?
+
+- Another one `<http://arxiv.org/pdf/1406.1078.pdf>`__
+  further conditions all hidden states of the decoder on the final encoding
+  hidden state V. This V is the last hidden state of the encoder, passed
+  through a mtrix and tanh, so we may encode it as the output of the
+  encoder in Keras. But it is used, via another tanh(matrix) as the initial
+  hidden state of the decoder. This is not so easy to do in Keras.
+  Also, there is no way in Keras to pass the generated label as input afaik.
+
 In the original paper for Seq2seq `<http://papers.nips.cc/paper/5346-sequence-to-sequence-learning-with-neural-networks.pdf>`__
 the authors formulate the seq2seq problem as a first LSTM model that encodes the words in the source sentence
 into a vector V, which is then passed to the decoding LSTM.
