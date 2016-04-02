@@ -1,4 +1,4 @@
-.. title: Why you MUST use static website generators
+.. title: Why static website generators are better
 .. slug: static-sites
 .. date: 2016-02-25 16:16:25 UTC+01:00
 .. tags: 
