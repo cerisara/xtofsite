@@ -1,7 +1,7 @@
 .. title: Seq2seq model in Keras
 .. slug: seq2seq
 .. date: 2016-03-24 10:16:25 UTC+01:00
-.. tags: lstm, keras, seq2seq
+.. tags: lstm, keras, seq2seq, draft
 .. category: 
 .. link: 
 .. description: 
