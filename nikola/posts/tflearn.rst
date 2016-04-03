@@ -8,9 +8,9 @@
 .. type: text
 
 TFLearn is a new abstract wrapper around Tensorflow.
-I find it actually very similar to Keras, except that TFLearn only supports Tensorflow,
-which is good, because it might be easier to bypass this abstraction layer and directly
-code in Tensorflow; and bad, because, well, you're stick to TF.
+I find it actually very similar to Keras, except that TFLearn only supports Tensorflow.
+This is both good and bad, because it might be easier to bypass this abstraction layer and directly
+code in Tensorflow; but well, you're stuck to TF.
 
 So I tested for one of my classification task a simple LSTM in both Keras and Tensorflow.
 Here's the code for the model both in Keras and TFLearn::
@@ -42,7 +42,7 @@ nice because it's thus very easy to compare them.
 
 Both pieces of code run at approximately the same speed.
 In terms of accuracy, as you can see on the following screenshots,
-They give quite comparable results, with slightly better resutls for Keras.
+They give quite comparable results, with slightly better results for Keras.
 
 Output from TFlearn::
 
@@ -109,6 +109,6 @@ it relies on non-free data. But the code is so simple that you can reproduce thi
 experiment in less than 5 minutes with any dataset !
 The results must be interpreted with caution, because they might be specific to these
 particular experimental conditions, and may be very different in other conditions.
-Note that no parameters in any case has been tuned at all; results may also be very
+Note that no parameter has been tuned at all; results may also be very
 different if parameters were tuned.
 
