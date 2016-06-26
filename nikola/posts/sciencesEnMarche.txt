@@ -1,9 +1,0 @@
-.. link: 
-.. description: 
-.. tags: sciencesenMarche
-.. date: 2014/09/17 13:17:35
-.. title: Sciences en marche
-.. slug: sciencesMarche
-
-.. image:: http://sciencesenmarche.org/fr/wp-content/uploads/2014/07/sciencesenmarche.jpg
-   :target: http://sciencesenmarche.org

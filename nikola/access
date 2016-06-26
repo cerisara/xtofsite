@@ -1,4 +1,0 @@
-AuthUserFile "/var/www/users/cerisara/stories/intranet/.htpasswd"
-AuthName "Acces Restreint"
-AuthType Basic
-require valid-user

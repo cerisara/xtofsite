@@ -1,3 +1,0 @@
-Weakly supervised parsing
-This work proposes a new weakly supervised parser that does not exploit any labeled corpus but that combines expert rules within a Bayesian framework.
-The proposed framework does not require any labeled corpus, but still generates labeled dependency arcs. Ambiguity between rules is resolved by Bayesian inference. The proposed weak supervision scheme allows to train discriminative models.
