@@ -124,6 +124,43 @@ And I&rsquo;ve come to a single conclusion: there is really nothing like static 
 site generators: sites are fast, not vulnerable, modern-looking, git-friendly,
 and you&rsquo;re the boss. period.</p>
 
+<p>I started with the old &ldquo;blogofile&rdquo;, and switched to <em>Nikola</em> after one year:
+Nikola is really good, but after 2 years, I think it&rsquo;s time to change, and
+<em>Hugo</em> looks best.</p>
+
+<p>A short recipe, if you&rsquo;re a linux addict:</p>
+
+<ul>
+<li><p>Install hugo</p>
+
+<p>sudo dkpg -i hugo.deb</p></li>
+
+<li><p>Create your site directories:</p>
+
+<p>hugo new site mysite</p></li>
+
+<li><p>Choose and install a theme:</p>
+
+<p>cd mysite/themes
+git clone <a href="https://github.com/vjeantet/hugo-theme-casper">https://github.com/vjeantet/hugo-theme-casper</a></p></li>
+
+<li><p>Add images in static/images/</p></li>
+
+<li><p>Add a post with</p>
+
+<p>hugo new post/mypost.md
+hugo undraft post/mypost.md</p></li>
+
+<li><p>Compile and deploy</p>
+
+<p>hugo &ndash;theme=hugo-theme-casper
+scp/sft to you site host (github pages is your friend here)</p></li>
+</ul>
+
+<p>Enjoy !</p>
+
+<p>I also recommend you to version your site code with git.</p>
+
     </section>
 
 

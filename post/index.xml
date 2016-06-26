@@ -29,6 +29,43 @@ vulnerabilities&amp;hellip;).
 And I&amp;rsquo;ve come to a single conclusion: there is really nothing like static web
 site generators: sites are fast, not vulnerable, modern-looking, git-friendly,
 and you&amp;rsquo;re the boss. period.&lt;/p&gt;
+
+&lt;p&gt;I started with the old &amp;ldquo;blogofile&amp;rdquo;, and switched to &lt;em&gt;Nikola&lt;/em&gt; after one year:
+Nikola is really good, but after 2 years, I think it&amp;rsquo;s time to change, and
+&lt;em&gt;Hugo&lt;/em&gt; looks best.&lt;/p&gt;
+
+&lt;p&gt;A short recipe, if you&amp;rsquo;re a linux addict:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Install hugo&lt;/p&gt;
+
+&lt;p&gt;sudo dkpg -i hugo.deb&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Create your site directories:&lt;/p&gt;
+
+&lt;p&gt;hugo new site mysite&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Choose and install a theme:&lt;/p&gt;
+
+&lt;p&gt;cd mysite/themes
+git clone &lt;a href=&#34;https://github.com/vjeantet/hugo-theme-casper&#34;&gt;https://github.com/vjeantet/hugo-theme-casper&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Add images in static/images/&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Add a post with&lt;/p&gt;
+
+&lt;p&gt;hugo new post/mypost.md
+hugo undraft post/mypost.md&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Compile and deploy&lt;/p&gt;
+
+&lt;p&gt;hugo &amp;ndash;theme=hugo-theme-casper
+scp/sft to you site host (github pages is your friend here)&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Enjoy !&lt;/p&gt;
+
+&lt;p&gt;I also recommend you to version your site code with git.&lt;/p&gt;
 </description>
     </item>
     
