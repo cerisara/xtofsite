@@ -1,3 +1,26 @@
-baseurl = "http://replace-this-with-your-hugo-site.com/"
-languageCode = "en-us"
-title = "My New Hugo Site"
+BaseUrl= "https://cerisara.github.io/xtofsite/"
+LanguageCode= "fr-FR"
+Title= "Xtofification"
+paginate = 5
+DisqusShortname = "xtof"
+Copyright = "All rights reserved - 2015"
+canonifyurls = true
+
+[params]
+  description = "La vie est une longue maladie mortelle"
+  cover = "images/cover.jpg"
+  author = "xtof54"
+  authorlocation = "Nancy, France"
+  authorwebsite = "https://cerisara.github.io/xtofsite/"
+  bio= "Je suis né, j'ai vécu, j'ai mouru"
+  logo = "images/cover.jpg"
+  googleAnalyticsUserID = ""
+  # Optional RSS-Link, if not provided it defaults to the standard index.xml
+  # RSSLink = "http://feeds.feedburner.com/..." 
+  githubName = "cerisara"
+  twitterName = "cerisara"
+  # facebookName = ""
+  # linkedinName = ""
+  # set true if you are not proud of using Hugo (true will hide the footer note "Proudly published with HUGO.....")
+  hideHUGOSupport = false
+
