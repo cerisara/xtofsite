@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Xtofification</title>
+    <link>https://cerisara.github.io/xtofsite/</link>
+    <description>Recent content on Xtofification</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-FR</language>
+    <copyright>All rights reserved - 2015</copyright>
+    <lastBuildDate>Sun, 26 Jun 2016 18:02:45 +0200</lastBuildDate>
+    <atom:link href="https://cerisara.github.io/xtofsite/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>About this site</title>
+      <link>https://cerisara.github.io/xtofsite/post/intro/</link>
+      <pubDate>Sun, 26 Jun 2016 18:02:45 +0200</pubDate>
+      
+      <guid>https://cerisara.github.io/xtofsite/post/intro/</guid>
+      <description>&lt;p&gt;Nowadays, personal websites and blogs are a bit depreciated, because
+everybody is posting on facebook. But a personal website is &lt;em&gt;yours&lt;/em&gt;, you
+control all of it from start to end. And so, you can really be proud of it,
+just like when you craft a small statue with your hands.
+It&amp;rsquo;s just unique, it&amp;rsquo;s you.&lt;/p&gt;
+
+&lt;p&gt;Over the years, I&amp;rsquo;ve tested many, many different solutions to build a website:
+in particular pure html (but it&amp;rsquo;s really too much work, isn&amp;rsquo;t it ?)
+and cms/wordpress (but you&amp;rsquo;re not in control, it&amp;rsquo;s heavy, no git, full of
+vulnerabilities&amp;hellip;).
+And I&amp;rsquo;ve come to a single conclusion: there is really nothing like static web
+site generators: sites are fast, not vulnerable, modern-looking, git-friendly,
+and you&amp;rsquo;re the boss. period.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
