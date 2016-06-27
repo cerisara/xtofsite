@@ -36,7 +36,7 @@
         <link href="https://cerisara.github.io/xtofsite/index.xml" rel="alternate" type="application/rss+xml" title="Xtofification" />
       
     
-    <meta name="generator" content="Hugo 0.16-DEV" />
+    <meta name="generator" content="Hugo 0.16" />
 
     <link rel="canonical" href="https://cerisara.github.io/xtofsite/" />
 
@@ -116,6 +116,10 @@
     
         
     
+        
+    
+        
+    
 
     
         
@@ -140,6 +144,32 @@
         
 <article class="post post">
     <header class="post-header">
+        <h2 class="post-title"><a href="https://cerisara.github.io/xtofsite/post/tflearn/">Comparison of Keras vs. TFlearn</a></h2>
+    </header>
+    <section class="post-excerpt">
+        <p>TFLearn is a new abstract wrapper around Tensorflow. I find it actually very similar to Keras, except that TFLearn only supports Tensorflow. This is both good and bad, because it might be easier to bypass this abstraction layer and directly code in Tensorflow; but well, you're stuck to TF. So I tested for one of my classification task a simple LSTM in both Keras and Tensorflow. Here's the code for the model both in Keras and TFLearn: if False: # TFLearn code g=tflearn.input_data([None,maxlen,len(char2id)]) g=tflearn.lstm(g,nhid) g=tflearn.fully_connected(g,len(da2id), activation='softmax') g=tflearn.regression(g,optimizer='adam', loss='categorical_crossentropy') model = tflearn.DNN(g, clip_gradients=0., tensorboard_verbose=0) model.fit(Xtr, Ytr, validation_set=(Xte,Yte), n_epoch=10, show_metric=True, batch_size=128) else: # Keras code model = Sequential() model.add(LSTM(nhid, input_shape=(maxlen, nchars), go_backwards=False, return_sequences=False)) model.add(Dense(len(da2id))) model.add(Activation('softmax')) model.compile(loss='categorical_crossentropy', optimizer='adam') model.fit(Xtr,Ytr,nb_epoch=10,validation_data=(Xte,Yte),show_accuracy=True) Of course, I've used the Tensorflow backend for Keras. <a class="read-more" href="https://cerisara.github.io/xtofsite/post/tflearn/">&raquo;</a></p>
+    </section>
+    <footer class="post-meta">
+        
+        
+
+        
+            <img class="author-thumb" src="https://cerisara.github.io/xtofsite/images/me.jpg" alt="Author image" nopin="nopin" />
+        
+        
+            xtof54
+        
+        
+        <time class="post-date" datetime="2016-06-27T18:02:45&#43;02:00">
+            27 Jun 2016
+        </time>
+    </footer>
+</article>
+
+    
+        
+<article class="post post">
+    <header class="post-header">
         <h2 class="post-title"><a href="https://cerisara.github.io/xtofsite/post/intro/">About this site</a></h2>
     </header>
     <section class="post-excerpt">
@@ -158,6 +188,32 @@
         
         <time class="post-date" datetime="2016-06-26T18:02:45&#43;02:00">
             26 Jun 2016
+        </time>
+    </footer>
+</article>
+
+    
+        
+<article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="https://cerisara.github.io/xtofsite/post/liveusb/">Persistent live USB</a></h2>
+    </header>
+    <section class="post-excerpt">
+        <p>How to simply create a bootable USB stick with a live Ubuntu 14 and persistency, UEFI-compatible, and all of this without ever formatting or repartitionning the disk ! I don&rsquo;t like repartitionning or reformating USB sticks, because they tend to be quite &ldquo;fragile&rdquo; these days: when you buy them, they&rsquo;re usually pre-partitionned with one big vfat partition. So let&rsquo;s keep with that, and install a bootable live Ubuntu with persistency on it. <a class="read-more" href="https://cerisara.github.io/xtofsite/post/liveusb/">&raquo;</a></p>
+    </section>
+    <footer class="post-meta">
+        
+        
+
+        
+            <img class="author-thumb" src="https://cerisara.github.io/xtofsite/images/me.jpg" alt="Author image" nopin="nopin" />
+        
+        
+            xtof54
+        
+        
+        <time class="post-date" datetime="2016-01-11T18:02:45&#43;02:00">
+            11 Jan 2016
         </time>
     </footer>
 </article>
