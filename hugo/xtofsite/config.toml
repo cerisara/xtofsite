@@ -1,6 +1,6 @@
 BaseUrl= "https://cerisara.github.io/xtofsite/"
 LanguageCode= "fr-FR"
-Title= "Xtofification"
+Title= "Deep ladb"
 theme = "hugo-theme-casper"
 paginate = 5
 DisqusShortname = "xtof"
