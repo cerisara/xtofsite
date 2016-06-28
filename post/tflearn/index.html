@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  	<meta property="og:title" content=" Comparison of Keras vs. TFlearn &middot;  Xtofification" />
+  	<meta property="og:site_name" content="Xtofification" />
+  	<meta property="og:url" content="https://cerisara.github.io/xtofsite/post/tflearn/" />
+
+    
+  	<meta property="og:type" content="article" />
+
+    <meta property="og:article:published_time" content="2016-06-27T18:02:45&#43;02:00" />
+
+    
+    
+
+  <title>
+     Comparison of Keras vs. TFlearn &middot;  Xtofification
+  </title>
+
+    <meta name="description" content="Geek, geocacher, clarinetist" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="https://cerisara.github.io/xtofsite/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="https://cerisara.github.io/xtofsite/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="https://cerisara.github.io/xtofsite/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="https://cerisara.github.io/xtofsite/css/nav.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400|Inconsolata" />
+
+
+    
+      
+          <link href="https://cerisara.github.io/xtofsite/index.xml" rel="alternate" type="application/rss+xml" title="Xtofification" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.16-DEV" />
+
+    <link rel="canonical" href="https://cerisara.github.io/xtofsite/post/tflearn/" />
+
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-32463045-4', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+        
+    </ul>
+    
+    
+    <a class="subscribe-button icon-feed" href="https://cerisara.github.io/xtofsite/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+      <a class="blog-logo" href="https://cerisara.github.io/xtofsite/"><img src="https://cerisara.github.io/xtofsite/images/me.jpg" alt="Home" /></a>
+  
+  
+      <a class="menu-button icon-feed" href="https://cerisara.github.io/xtofsite/index.xml">&nbsp;&nbsp;Subscribe</a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">Comparison of Keras vs. TFlearn</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2016-06-27T18:02:45&#43;02:00">
+            Jun 27, 2016
+          </time>
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <div class="document">
+
+
+<p>TFLearn is a new abstract wrapper around Tensorflow.
+I find it actually very similar to Keras, except that TFLearn only supports Tensorflow.
+This is both good and bad, because it might be easier to bypass this abstraction layer and directly
+code in Tensorflow; but well, you're stuck to TF.</p>
+<p>So I tested for one of my classification task a simple LSTM in both Keras and Tensorflow.
+Here's the code for the model both in Keras and TFLearn:</p>
+<pre class="literal-block">
+if False:
+    # TFLearn code
+    g=tflearn.input_data([None,maxlen,len(char2id)])
+    g=tflearn.lstm(g,nhid)
+    g=tflearn.fully_connected(g,len(da2id), activation='softmax')
+    g=tflearn.regression(g,optimizer='adam', loss='categorical_crossentropy')
+
+    model = tflearn.DNN(g, clip_gradients=0., tensorboard_verbose=0)
+    model.fit(Xtr, Ytr, validation_set=(Xte,Yte), n_epoch=10, show_metric=True, batch_size=128)
+else:
+    # Keras code
+    model = Sequential()
+    model.add(LSTM(nhid, input_shape=(maxlen, nchars), go_backwards=False, return_sequences=False))
+    model.add(Dense(len(da2id)))
+    model.add(Activation('softmax'))
+    model.compile(loss='categorical_crossentropy', optimizer='adam')
+    model.fit(Xtr,Ytr,nb_epoch=10,validation_data=(Xte,Yte),show_accuracy=True)
+</pre>
+<p>Of course, I've used the Tensorflow backend for Keras.</p>
+<p>As you can see, both codes are very similar !
+Furthermore, the input and output tensors are exactly the same in both cases, which is
+nice because it's thus very easy to compare them.</p>
+<p>Both pieces of code run at approximately the same speed.
+In terms of accuracy, as you can see on the following screenshots,
+They give quite comparable results, with slightly better results for Keras.</p>
+<p>Output from TFlearn:</p>
+<pre class="literal-block">
+Training samples: 104564
+Validation samples: 2207
+--
+Training Step: 817  | total loss: 1.34866
+| Adam | epoch: 001 | loss: 1.34866 - acc: 0.6172 | val_loss: 1.48790 - val_acc: 0.5221 -- iter: 000000/104564
+--
+Training Step: 1634  | total loss: 1.24601
+| Adam | epoch: 002 | loss: 1.24601 - acc: 0.6445 | val_loss: 1.38776 - val_acc: 0.5452 -- iter: 000000/104564
+--
+Training Step: 2451  | total loss: 1.25703
+| Adam | epoch: 003 | loss: 1.25703 - acc: 0.6359 | val_loss: 1.35823 - val_acc: 0.5452 -- iter: 000000/104564
+--
+Training Step: 3268  | total loss: 1.21172
+| Adam | epoch: 004 | loss: 1.21172 - acc: 0.6435 | val_loss: 1.31693 - val_acc: 0.5470 -- iter: 000000/104564
+--
+Training Step: 4085  | total loss: 1.18737
+| Adam | epoch: 005 | loss: 1.18737 - acc: 0.6375 | val_loss: 1.27222 - val_acc: 0.5478 -- iter: 000000/104564
+--
+Training Step: 4902  | total loss: 1.15483
+| Adam | epoch: 006 | loss: 1.15483 - acc: 0.6420 | val_loss: 1.25492 - val_acc: 0.5501 -- iter: 000000/104564
+--
+Training Step: 5719  | total loss: 1.09600
+| Adam | epoch: 007 | loss: 1.09600 - acc: 0.6510 | val_loss: 1.23394 - val_acc: 0.5538 -- iter: 000000/104564
+--
+Training Step: 6536  | total loss: 1.10121
+| Adam | epoch: 008 | loss: 1.10121 - acc: 0.6576 | val_loss: 1.24449 - val_acc: 0.5608 -- iter: 000000/104564
+--
+Training Step: 7353  | total loss: 1.10770
+| Adam | epoch: 009 | loss: 1.10770 - acc: 0.6427 | val_loss: 1.17806 - val_acc: 0.5846 -- iter: 000000/104564
+--
+Training Step: 8170  | total loss: 1.06616
+| Adam | epoch: 010 | loss: 1.06616 - acc: 0.6594 | val_loss: 1.16912 - val_acc: 0.5816 -- iter: 000000/104564
+</pre>
+<p>Output from Keras:</p>
+<pre class="literal-block">
+Train on 104564 samples, validate on 2207 samples
+Epoch 1/10
+104564/104564 [==============================] - 38s - loss: 1.3849 - acc: 0.6192 - val_loss: 1.3353 - val_acc: 0.5478
+Epoch 2/10
+104564/104564 [==============================] - 38s - loss: 1.1533 - acc: 0.6468 - val_loss: 1.2243 - val_acc: 0.5741
+Epoch 3/10
+104564/104564 [==============================] - 38s - loss: 1.0937 - acc: 0.6581 - val_loss: 1.2146 - val_acc: 0.5696
+Epoch 4/10
+104564/104564 [==============================] - 38s - loss: 1.0583 - acc: 0.6637 - val_loss: 1.1613 - val_acc: 0.5863
+Epoch 5/10
+104564/104564 [==============================] - 38s - loss: 1.0369 - acc: 0.6685 - val_loss: 1.1848 - val_acc: 0.5872
+Epoch 6/10
+104564/104564 [==============================] - 38s - loss: 1.0219 - acc: 0.6717 - val_loss: 1.1340 - val_acc: 0.5922
+Epoch 7/10
+104564/104564 [==============================] - 38s - loss: 1.0066 - acc: 0.6752 - val_loss: 1.1303 - val_acc: 0.5949
+Epoch 8/10
+104564/104564 [==============================] - 38s - loss: 0.9965 - acc: 0.6774 - val_loss: 1.1235 - val_acc: 0.5967
+Epoch 9/10
+104564/104564 [==============================] - 38s - loss: 0.9867 - acc: 0.6788 - val_loss: 1.1135 - val_acc: 0.5995
+Epoch 10/10
+104564/104564 [==============================] - 38s - loss: 0.9781 - acc: 0.6809 - val_loss: 1.1198 - val_acc: 0.6044
+</pre>
+<p>Disclaimer: this comparison is not reproducible, and is not meant to be, because
+it relies on non-free data. But the code is so simple that you can reproduce this
+experiment in less than 5 minutes with any dataset !
+The results must be interpreted with caution, because they might be specific to these
+particular experimental conditions, and may be very different in other conditions.
+Note that no parameter has been tuned at all; results may also be very
+different if parameters were tuned.</p>
+</div>
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+    <figure class="author-image">
+        <a class="img" href="https://cerisara.github.io/xtofsite/" style="background-image: url(https://cerisara.github.io/xtofsite/images/me.jpg)"><span class="hidden">xtof54's Picture</span></a>
+    </figure>
+    
+
+    
+
+
+
+
+
+<section class="author">
+  <h4><a href="https://cerisara.github.io/xtofsite/">xtof54</a></h4>
+  
+  <p>Geek, geocacher, clarinetist</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">Nancy, France</span>
+    <span class="author-link icon-link"><a href="https://cerisara.github.io/xtofsite/">https://cerisara.github.io/xtofsite/</a></span>
+  </div>
+</section>
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Comparison%20of%20Keras%20vs.%20TFlearn&amp;url=https%3a%2f%2fcerisara.github.io%2fxtofsite%2fpost%2ftflearn%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fcerisara.github.io%2fxtofsite%2fpost%2ftflearn%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fcerisara.github.io%2fxtofsite%2fpost%2ftflearn%2f&amp;description=Comparison%20of%20Keras%20vs.%20TFlearn"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2fcerisara.github.io%2fxtofsite%2fpost%2ftflearn%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'xtof';
+  var disqus_url = 'https:\/\/cerisara.github.io\/xtofsite\/post\/tflearn\/';
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+  </footer>
+</article>
+
+</main>
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">Xtofification</a> All rights reserved - 2015</section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="https://cerisara.github.io/xtofsite/js/jquery.js"></script>
+    <script type="text/javascript" src="https://cerisara.github.io/xtofsite/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://cerisara.github.io/xtofsite/js/index.js"></script>
+    
+</body>
+</html>
+

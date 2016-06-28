@@ -212,7 +212,7 @@ So you may have to edit the BIOS in order to&lt;/p&gt;
 &lt;li&gt;Enable UEFI boot instead of legacy boot&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;create-the-persistent-file&#34;&gt;Create the persistent file&lt;/h2&gt;
+&lt;h2 id=&#34;create-the-persistent-file:eeef66a267cb8371553e45e319c50796&#34;&gt;Create the persistent file&lt;/h2&gt;
 
 &lt;p&gt;Must be done on a different linux system than the one that is on the USB key:&lt;/p&gt;
 
