@@ -15,7 +15,7 @@ canonifyurls = true
   authorwebsite = "https://cerisara.github.io/xtofsite/"
   bio= "Geek, geocacher, clarinetist"
   logo = "images/me.jpg"
-  googleAnalyticsUserID = ""
+  googleAnalyticsUserID = "UA-32463045-4"
   # Optional RSS-Link, if not provided it defaults to the standard index.xml
   # RSSLink = "http://feeds.feedburner.com/..." 
   githubName = "cerisara"
@@ -25,96 +25,3 @@ canonifyurls = true
   # set true if you are not proud of using Hugo (true will hide the footer note "Proudly published with HUGO.....")
   hideHUGOSupport = false
 
-# specific to ARTIST
-
-#    # You can use Markdown syntax for urls [text](//url.to/source) for
-#    # most longer texts.
-#
-#    # To provide some metadata for search engines feel free to add a few
-#    # information about you and your website.
-#    name = "Xtof54"
-#    description = "Geek, geocacher, clarinetist"
-#
-#    # Since this template is static, the contact form uses www.formspree.io as a
-#    # proxy. The form makes a POST request to their servers to send the actual
-#    # email. Visitors can send up to a 1000 emails each month for free.
-#    #
-#    # What you need to do for the setup?
-#    #
-#    # - set your email address under 'email' below
-#    # - upload the generated site to your server
-#    # - send a dummy email yourself to confirm your account
-#    # - click the confirm link in the email from www.formspree.io
-#    # - you're done. Happy mailing!
-#    # email = "cerisara@loria.fr"
-#
-#
-#    # Header an navigation
-#    #
-#    # To change the header background the 'hero-bg-jpg' at 'static/img'.
-#    # Do the same with the logo ('logo.svg').
-#    # But keep the original filename!
-#    [params.header]
-#        title = "Xtofification"
-#        shortBio = "Geek // geocacher // clarinetist"
-#
-#
-#    # About section
-#    #
-#    # Replace the 'avatar.jpg' under 'static/img' with your own image.
-#    [params.about]
-#        title = "About me"
-#        bio = "Open Source lover, git, latex; *Carinetist*, love baroque; *Geocaching*, walking, bicycling"
-#
-#        [[params.about.skills]]
-#            name = "Java, python, android..."
-#            value = 10
-#
-#        [[params.about.skills]]
-#            name = "Research: speech"
-#            value = 8
-#
-#        [[params.about.skills]]
-#            name = "Research: deep learning"
-#            value = 6
-#
-#        [[params.about.skills]]
-#            name = "Research: NLP"
-#            value = 5
-#
-#    # Contact secion
-#    [params.contact]
-#        title = "Contact"
-#
-#        # The following social network icons are available:
-#        # 'twitter' / 'facebook' / 'github' / 'pinterest' 'google-plus' / 'linkedin'
-#        # 'youtube' / 'instagram' / 'dribbble' / 'behance' / 'soundcloud' / 'vine'
-#        [[params.contact.social]]
-#            icon = "github"
-#            link = "//github.com/cerisara"
-#
-#        [[params.contact.social]]
-#            icon = "twitter"
-#            link = "//twitter.com/ccerisara"
-#
-#        [[params.contact.social]]
-#            icon = "linkedin"
-#            link = "//www.linkedin.com/in/christophe-cerisara-32864363"
-#
-#        [[params.contact.social]]
-#            icon = "youtube"
-#            link = "//www.youtube.com/cerisara"
-#
-#
-##    [params.form]
-##        title = "Let's work together"
-##        # Form fields
-##        name = "Your Name"
-##        email = "Your Email"
-##        message = "Tell me about your project"
-##        buttonText = "Send"
-#
-#
-#    [params.footer]
-#        copyright = "Published under the Unlicense License."
-#
