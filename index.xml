@@ -7,8 +7,61 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-FR</language>
     <copyright>All rights reserved - 2015</copyright>
-    <lastBuildDate>Mon, 27 Jun 2016 18:02:45 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 03 Jul 2016 18:02:45 +0200</lastBuildDate>
     <atom:link href="https://cerisara.github.io/xtofsite/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Experiments in scientific papers are just wrong</title>
+      <link>https://cerisara.github.io/xtofsite/post/xps/</link>
+      <pubDate>Sun, 03 Jul 2016 18:02:45 +0200</pubDate>
+      
+      <guid>https://cerisara.github.io/xtofsite/post/xps/</guid>
+      <description>&lt;div class=&#34;document&#34;&gt;
+
+
+&lt;p&gt;99% of all experimental results reported in scientific papers are just plain wrong.&lt;/p&gt;
+&lt;p&gt;There are several reasons that support this claim, but I&#39;ll just discuss the first of them here.
+It&#39;s actually very simple, and we all know very well about it; it&#39;s just that nobody really cares.
+So, here is the issue:&lt;/p&gt;
+&lt;p&gt;You can only run a &lt;em&gt;single&lt;/em&gt; experiment on a given test set.
+I mean, really just one experiment on your whole life time.
+You must never, ever, run a second experiment on the same test.
+In other words, once you have computed one accuracy value (or F-measure, or whatever metric you like)
+on one test set, your have &amp;quot;burnt&amp;quot; your test set, and you must delete it immediately so that you can never
+reuse it again.
+Otherwise, your second and future accuracies on this test set are just plain wrong: you unconsciously
+tune your systems on the test set; not that much, of course, but you&#39;re really doing system selection
+on the test set.&lt;/p&gt;
+&lt;p&gt;Of course, in every paper, we honestly claim to tune hyper-parameters on some development corpus.
+But is it really the first time in our life that we have downloaded this test corpus ?
+Do we really delete the corpus forever once we have run a unique experiment ?&lt;/p&gt;
+&lt;p&gt;The problem is that nowadays, we heavily rely on experimental evaluation to compare systems (and
+incidentaly accept or reject papers).
+Beside this issue related to the test corpus, there are many other potential pitfalls in such comparisons:
+Number of parameters ?
+Are all parameters really used efficiently ?
+Does training really converge to a good optimum for each model ?
+How many time and efforts have been dedicated to improve a given model with respect to another ?
+All these issues really make model comparisons awkward.&lt;/p&gt;
+&lt;p&gt;As scientists, we are all very well aware of these issues.
+But wouldn&#39;t it be worse to not compare models at all ?&lt;/p&gt;
+&lt;p&gt;I believe it&#39;s best to at least try and experimentally compare models, but it&#39;s also important to
+repeat again and again, as I do here, that no experimental result is perfect and that they must
+always be interpreted with the greatest care.&lt;/p&gt;
+&lt;p&gt;In this regard, evaluation campaigns looks appealing, because they are designed so that it&#39;s much harder
+to run some experiment several times on the test corpus. But it&#39;s a lot of efforts to invest for a single
+one-time evaluation shot, and from my experience, evaluation campaigns are often plaged with their own
+issues, in particular, is the test corpus really totally new ? It&#39;s not always the case in practice.&lt;/p&gt;
+&lt;p&gt;So what next ?&lt;/p&gt;
+&lt;p&gt;Maybe we should consider new paradigms for evaluation: for instance, good models are the ones that tend to
+reveal themselves efficient in many different situations, when tested by many different researchers
+over a long period of time.
+Of course, such evaluations over the long run are incompatible with nowadays paradigm of publishing several
+papers per year. But may be the source of the problem is really this exponential course for publications that prevent
+researchers from correctly running long-term evaluations, and the real solution probably lies in changing
+the way researchers are evaluated, and not our models.&lt;/p&gt;
+&lt;/div&gt;</description>
+    </item>
     
     <item>
       <title>Comparison of Keras vs. TFlearn</title>
@@ -212,7 +265,7 @@ So you may have to edit the BIOS in order to&lt;/p&gt;
 &lt;li&gt;Enable UEFI boot instead of legacy boot&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;create-the-persistent-file:eeef66a267cb8371553e45e319c50796&#34;&gt;Create the persistent file&lt;/h2&gt;
+&lt;h2 id=&#34;create-the-persistent-file&#34;&gt;Create the persistent file&lt;/h2&gt;
 
 &lt;p&gt;Must be done on a different linux system than the one that is on the USB key:&lt;/p&gt;
 
