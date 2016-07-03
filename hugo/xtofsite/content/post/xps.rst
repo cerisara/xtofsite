@@ -47,14 +47,12 @@ one-time evaluation shot, and from my experience, evaluation campaigns are often
 issues, in particular, is the test corpus really totally new ? It's not always the case in practice.
 
 So what next ?
+
 Maybe we should consider new paradigms for evaluation: for instance, good models are the ones that tend to
 reveal themselves efficient in many different situations, when tested by many different researchers
 over a long period of time.
 Of course, such evaluations over the long run are incompatible with nowadays paradigm of publishing several
 papers per year. But may be the source of the problem is really this exponential course for publications that prevent
 researchers from correctly running long-term evaluations, and the real solution probably lies in changing
-the way researchers are evaluated, and not their model.
+the way researchers are evaluated, and not our models.
 
-
-
-be effectively 
